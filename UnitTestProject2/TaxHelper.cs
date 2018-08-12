@@ -12,6 +12,7 @@ namespace UnitTestProject2
             {1210000,0.2m},
             {2420000,0.3m},
             {4530000,0.4m},
+            {10310000,0.5m},
         };
 
         public decimal GetTaxResult(decimal income)
