@@ -36,5 +36,13 @@ namespace UnitTestProject2
             var taxResult = taxHelper.GetTaxResult(1210000);
             Assert.AreEqual(107400, taxResult);
         }
+
+        [TestMethod]
+        public void Income_1218000_Tax_109000()
+        {
+            var taxHelper = new TaxHelper();
+            var taxResult = taxHelper.GetTaxResult(1218000);
+            Assert.AreEqual(109000, taxResult);
+        }
     }
 }
