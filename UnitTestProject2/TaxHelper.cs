@@ -22,19 +22,6 @@ namespace UnitTestProject2
                 ? maxLevel.Value * income
                 : maxLevel.Value * (income - maxLevel.Key) + GetTaxResult(maxLevel.Key);
 
-            if (income > 2420000)
-            {
-                return 540000 * 0.05m + (1210000 - 540000) * 0.12m + (2420000 - 1210000) * 0.2m + (income - 2420000) * 0.3m;
-            }
-            if (income > 1210000)
-            {
-                return 540000 * 0.05m + (1210000 - 540000) * 0.12m + (income - 1210000) * 0.2m;
-            }
-            if (income > 540000)
-            {
-                return 540000 * 0.05m + (income - 540000) * 0.12m;
-            }
-            return income * 0.05m;
         }
     }
 }
