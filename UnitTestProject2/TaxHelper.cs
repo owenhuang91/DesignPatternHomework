@@ -18,10 +18,9 @@ namespace UnitTestProject2
         public decimal GetTaxResult(decimal income)
         {
             var maxLevel = _percentLookup.LastOrDefault(m => m.Key < income);
-            return maxLevel.Key == _percentLookup.FirstOrDefault().Key
+            return maxLevel.Key == _percentLookup.First().Key
                 ? maxLevel.Value * income
                 : maxLevel.Value * (income - maxLevel.Key) + GetTaxResult(maxLevel.Key);
-
         }
     }
 }
