@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace UnitTestProject2
@@ -8,18 +7,19 @@ namespace UnitTestProject2
     {
         private Dictionary<int, decimal> _percentLookup = new Dictionary<int, decimal>
         {
-            {540000,0.05m},
-            {1210000,0.12m},
-            {2420000,0.2m},
-            {Int32.MaxValue,0.3m},
+            {0,0.05m},
+            {540000,0.12m},
+            {1210000,0.2m},
+            {2420000,0.3m},
+            {4530000,0.4m},
         };
 
         public decimal GetTaxResult(decimal income)
         {
-            var maxLevel = _percentLookup.FirstOrDefault(m => m.Key >= income);
+            var maxLevel = _percentLookup.LastOrDefault(m => m.Key < income);
             return maxLevel.Key == _percentLookup.FirstOrDefault().Key
                 ? maxLevel.Value * income
-                : maxLevel.Value * maxLevel.Key - income + GetTaxResult(maxLevel.Key);
+                : maxLevel.Value * (income - maxLevel.Key) + GetTaxResult(maxLevel.Key);
 
             if (income > 2420000)
             {
